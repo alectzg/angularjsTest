@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="MyApp">
+<head>
+	<meta charset="UTF-8">
+	<title>模板数据绑定</title>
+	<script src="angular-1.0.1.min.js"></script>	
+</head>
+<body>
+	<div ng-controller="testc">
+		<h1>{{newtitle}}</h1>
+		题目：<input type="text" ng-model="name"> <br>
+		分数：<input type="text" ng-model="franction"> <br>
+		选项：<button ng-click="addOption()">增加选项</button><br>
+		<ul>
+			<li ng-repeat="o in question.options">
+			  <b>{{$index+1}}.</b>
+			  <input type="text" ng-model="o.content" value="o.content" />
+			  <a href="javascript:void(0)" ng-click($index)>删除</a>
+				
+			</li>
+		</ul>
+		<hr>
+		<div>
+			<h1>{{question.previewtitle}}</h1>
+			<b>{{question.name}}({{question.fraction}})分</b>
+			<ul>
+				<li ng-repeat="o in question.options">
+                <b>{{$index+1}}.</b>
+                <input type="radio" name="optcheck" />
+                {{o.content}}
+        </li>
+			</ul>
+		</div>
+		<h1>{{previewtitle}}</h1>
+		<b>{{name}}</b>({{franction}})分
+	</div>
+	<script charset="utf-8">
+    var app=angular.module('MyApp',[],function(){
+    	console.log('started')});
+
+    var testc=function($scope){
+      $scope.newtitle='新建试题';
+      $scope.previewtitle='预览试题';
+      $scope.name = $scope.fraction = '';
+    }
+
+	</script>
+</body>
+</html>

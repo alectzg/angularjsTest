@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ng-class</title>
+	<script src="angular-1.0.1.min.js"></script>
+	<style>
+    .error {
+      background-color: red;
+    }
+    .warning {
+      background-color: yellow;
+    }
+    table td{text-align: center;}
+    .selected {
+       background-color: gray;
+    }
+    li.odd{background-color: red}
+	</style>
+</head>
+<body ng-app>
+	<div ng-controller='HeaderController'>
+	  <div ng-class='{error: isError, warning: isWarning}'>
+	    {{messageText}}
+	  </div>
+	  <button ng-click='showError()'>Simulate Error</button>
+    <button ng-click='showWarning()'>Simulate Warning</button>
+  </div>
+  <div ng-controller="infoTable">
+    <h3>表格制作-高亮效果</h3>
+	  <table border="1" width=500>
+		  <tr>
+			  <th>name</th>
+			  <th>age</th>
+			  <th>address</th>
+		  </tr>
+		  <tr ng-repeat='info in infos' ng-click='selectRestaurant($index)' ng-class='{selected:$index==selectedRow}'>
+			  <td>{{info.name}}</td>
+			  <td>{{info.age}}</td>
+			  <td>{{info.adress}}</td>
+		  </tr>		
+	  </table>
+  </div>
+  <h2>ng-class-even和ng-class-odd是和ng-repeat配合使用</h2>
+  <ul ng-init="list=[1,2,3,4]">
+  	<li ng-class-odd="'odd'" ng-class-even="'even'" ng-repeat="number in list">
+  		{{number}}
+  	</li>
+  </ul>  
+  
+  <p>注意里面给的还是表示式，别少了引号。 </p>
+
+<script>
+//示例1 code
+	function HeaderController($scope) {
+  $scope.isError = false;
+  $scope.isWarning = false;
+  $scope.showError = function() {
+    $scope.messageText = 'This is an error!';
+    $scope.isError = true;
+    $scope.isWarning = false;
+  };
+  $scope.showWarning = function() {
+    $scope.messageText = 'Just a warning.  Please carry on.';
+    $scope.isWarning = true;
+    $scope.isError = false;
+  };
+}
+
+//示例 2 code
+
+function infoTable($scope){
+  $scope.infos=[
+  {name:'小杨',age:20,adress:'云南'},
+  {name:'小光',age:21,adress:'贵州'},
+  {name:'小畅',age:22,adress:'四川'},
+  {name:'小烂',age:23,adress:'甘肃'}
+  ];
+  $scope.selectRestaurant =function(row){
+
+  	$scope.selectedRow =row;
+  };
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ng-click</title>
+	<script src="angular-1.0.1.min.js"></script>
+</head>
+<body ng-app>
+	<div ng-controller="ctrl">
+		<button ng-dblclick='showMsg()'>{{a}}</button>
+	</div>
+
+	<script>	
+    function ctrl($scope){
+    	$scope.a='hello';
+    	$scope.showMsg=function(){
+    		$scope.a='world';
+    	}
+    }
+	</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>angularjs事件绑定</title>
+	<script src="angular-1.0.1.min.js"></script>
+</head>
+<body ng-app>
+	<div>
+		单价：<input type="number" min=0 ng-model="price" ng-init="price=299">
+		数量: <input type="number" min=0 ng-model="quantity" ng-init="quantity=1">	
+		<input type="color">
+		<br>
+		总价：{{(price) * (quantity)}}
+		<dt>
+		  <dl>注:</dl>
+			<dd>涉及html5的input：<a href="http://www.w3school.com.cn/html5/att_input_type.asp">http://www.w3school.com.cn/html5/att_input_type.asp</a></dd>
+			<dd>ng-init:设定初始值</dd>
+		</dt>
+	</div>
+</body>
+</html>

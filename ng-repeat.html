@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ng-repeat:迭代器</title>
+	<script src="angular-1.0.1.min.js"></script>
+</head>
+<body>
+	<div ng-app>
+		<div ng-init="friends=[{name:'Jhon',age:25},{name:'Mary',age:28}]"></div>
+		<p>我有{{friends.length}} 朋友.他们是</p>
+    <ul>
+    	<li ng-repeat="friend in friends">
+
+    		[{{$index+1}}]:{{friend.name}}年龄为：{{friend.age}}
+    	</li>
+    </ul>
+	</div>
+</body>
+</html>

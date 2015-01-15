@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ng-show/ng-hide：控制界面元素的显示/隐藏</title>
+	<script src="angular-1.0.1.min.js"></script>
+</head>
+<body ng-app>
+  <h2>显示：ng-show="!xx":在属性值前面加！表示确定,如果不加！表示不确定，ng-hide:同理</h2>
+
+	<div ng-show="!show">
+		ng-hide="!show"
+	</div>
+	<div ng-show="show">
+		ng-hide="show"
+	</div>
+
+	<div ng-hide="aaa">
+		ng-hide="aaa"
+	</div>
+
+	<div ng-hide="!aaa">
+		ng-show="!aaa"
+	</div>
+
+
+  <h2>toggle</h2>
+  <a href ng-click="showLog=!showLog">显示logo</a>
+  
+  <div ng-show="showLog">
+  	<img ng-src="http://liteng.org/sites/default/files/logo.png" alt="">
+  </div>
+  <p>ng-click="goCats=!goCats"点击设置goCats的值</p>
+
+</body>
+</html>
