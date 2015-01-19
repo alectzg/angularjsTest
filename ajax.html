@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+	<meta charset="UTF-8">
+	<title>ajax</title>
+	<script src="angular-1.0.1.min.js"></script>
+</head>
+<body>
+	<div class="container" ng-controller="TestCtrl">
+		<h2>HTTP请求-方法1</h2>
+    
+    <ul>
+    	<li ng-repeat="x in names">
+    		{{x.Name}}+{{x.Country}}
+    	</li>
+    </ul>
+   
+	</div>
+	<h2>方法2</h2>
+	<div ng-controller="TestCtrl2">
+		<ul>
+    	<li ng-repeat="y in info">
+    		{{y.aid}}+{{y.title}}
+    	</li>
+    </ul>
+	</div>
+		<script>
+		  //方法1
+      var TestCtrl=function($scope,$http){
+         var p=$http({
+         	method:'GET',
+         	url:'json/date.json'
+         });
+         p.success(function(response,status,headers,config){
+            $scope.names=response;
+         });
+         p.error(function(status){
+            console.log(status);
+         });
+      }
+  
+      //方法2
+      function TestCtrl2($scope,$http){
+      	$http.get('json/yiqi_article.json').success(function(response){
+             $scope.info=response;
+      	});
+
+      }
+
+
+		</script>	
+</body>
+</html>

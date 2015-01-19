@@ -1,25 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="SimpleForm">
 <head>
 	<meta charset="UTF-8">
 	<title>表单控件</title>
+	<style>
+    .ng-cloak{
+    	display: none;
+    }
+    .css-form input.ng-invalid.ng-dirty {
+      background-color: #fa787e;
+    }
+    .css-form input.ng-valid.ng-dirty {
+      background-color: #78fa89;
+    }    
+	</style>
+	<script src="angular-1.0.1.min.js"></script>
 </head>
 <body>
-	link:	<a href="http://www.zouyesheng.com/angular.html#toc3">http://www.zouyesheng.com/angular.html#toc3</a>
+	<p></p>link:	<a href="http://www.zouyesheng.com/angular.html#toc3">http://www.zouyesheng.com/angular.html#toc3</a>
+  <p><a href="http://www.cnblogs.com/lcllao/archive/2012/09/17/2688127.html">http://www.cnblogs.com/lcllao/archive/2012/09/17/2688127.html</a></p>
 	<h2>表单控件中相关的内容</h2>
-	<form name="test_form" ng-controller="testCtrl">
-		<input type="text" name="a" required ng-model="a" />
-		<span ng-click="see()">{{test_form.$valid}}</span>
-	</form>
+  <div ng-controller="MyCtrl" class="ng-cloak" >
+  	<form novalidate>
+  		名字：<input type="text" ng-model="user.name" required /><br>
 
-	<script>
-    var testCtrl=function($scope){
+  		<div ng-class="formName.userName.$dirty&&formName.userName.$invalid">
+  			<span>请填写名字</span>
+  		</div>
 
-    	$scope.see=function(){
-    		console.log($scope.test_form);
-    		console.log($scope.test_form.a);
-    	}
-    }
-	</script>
+  		Email <input type="email" ng-model="user.email" required /><br>
+      
+      <div ng-show="formName.userEmail.$dirty&&formName.userEmail.$invalid">
+        <span ng-show="formName.userEmail.$error.required">请填写Email</span>
+         <span ng-show="formName.userEmail.$error.email">这不是一个有效的Email</span>
+      </div>
+
+
+  		性别：<input type="radio" value="男" ng-model="user.gender">男
+  		<input type="radio" value="女" ng-model="user.gender">女<br>
+  		 <input type="checkbox" ng-model="user.agree" name="userAgree" required/>我同意：
+        <input type="text" ng-show="user.agree" ng-model="user.agreeSign" required/>
+        <br/>
+        <div ng-show="!formName.userAgree || !user.agreeSign">请同意并签名~</div>
+        <button ng-click="reset()" ng-disabled="isUnchanged(user)">RESET</button>
+        <button ng-click="update(user)" ng-disabled="formName.$invalid || isUnchanged(user)">SAVE</button>
+    </form>
+  	<pre>form={{user | json}}</pre>
+  	<pre>saved={{saved | json}}</pre>
+  </div>
+  <script>
+    var app=angular.module("SimpleForm",[]);
+    app.controller("MyCtrl",function($scope,$window){
+         $scope.saved={};
+         $scope.update=function(user){
+         	$scope.saved=angular.copy(user);
+         };
+
+         $scope.reset=function(){
+         	$scope.user=angular.copy($scope.saved);
+         };
+         $scope.isUnchanged=function(){
+         	return angular.equals(user,$scope.saved)
+         };
+
+         $scope.reset();
+         //不合法的值将不会进入user
+    });
+  </script>
 </body>
 </html>

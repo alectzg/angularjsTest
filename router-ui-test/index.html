@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>angular ui-router test</title>
+	<script src="lib/angular-1.2.14/angular.js"></script>
+  <script src="lib/angular-ui-router.js"></script>
+</head>
+<body ng-app="routerApp">
+	<div class="container">
+		<h2>router:根据#锚点跳转相应模板template</h2>
+    <ul>
+      <li><a ui-sref="home">首页</a></li>
+      <li><a ui-sref="about">关于</a></li>
+      <li><a ui-sref="info">信息表</a></li>
+     </ul>
+     <div ui-view=""></div>
+
+	</div>
+
+	<script src="app.js"></script>
+</body>
+</html>

@@ -34,3 +34,13 @@ $last 是否为尾元素
   对于事件对象本身，在函数调用时可以直接使用 $event 进行传递： 
     <p ng-click="click($event)">点击</p>
     <p ng-click="click($event.target)">点击</p>
+
+
+4.form
+为了让form以及控件、ngModel富有样式，可以增加以下class：
+
+    ng-valid
+    ng-invalid
+    ng-pristine（从未输入过）
+    ng-dirty（输入过）
+
