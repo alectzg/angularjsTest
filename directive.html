@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>directive 指令</title>
+	<script src="angular-1.0.1.min.js"></script>
+</head>
+<body ng-app="myApp">
+	<h2>directive 指令</h2>
+	<p>创建directive有四种类型EACM</p>
+	<p>E 表示该指令是一个element; A 表示该指令是attribute; C 表示该指令是class; M 表示该指令是注释</p>
+	<ol>
+		<li>一个新的HTML元素(比如下面的helloworld)</li>
+		<li>一个元素上的属性date-picker</li>
+		<li>作为一个class类（容易混淆）</li>
+		<li>作为注释<!-- directive:hello--></li>
+	</ol>
+	
+	<hello></hello>
+	<div hello></div>	
+	<div class="hello"></div> 
+	<!-- directive:hello -->
+	<p>注意注释的！-- 要加空格 --</p>
+	<h2>link：专门对于DOM操作的方法</h2>
+	<p>http://www.html-js.com/article/1818</p>
+
+	<script>
+  var app=angular.module('myApp',[]);
+  app.directive('hello',function(){
+  	return{
+  		restrict:'AECM',
+  		replace:true,
+  		template:'<h1>hello world</h1>',
+  		//dom操作
+  		link:function(scope,elem,attr){
+
+        //事件绑定
+        elem.bind('click',function(){
+        	elem.css('background-color','gray');
+        	scope.$apply(function(){scope.color="white"});
+        });
+        //多个事件绑定
+        elem.bind('mouseover',function(){
+        	elem.css('cursor','pointer');
+        });
+
+  		}
+  	}
+  });
+	</script>	
+</body>
+</html>
