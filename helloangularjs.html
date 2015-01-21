@@ -10,5 +10,7 @@
 	<input type="text" ng-model="name" id="name"/>
 	<hr>
 	hello:{{name || 'liteng'}}
+	<p>为了避免刷新出现{{}}代码的现象可以使用ng-bind来替代</p>
+	hello: <span ng-bind="name"></span>	
 </body>
 </html>

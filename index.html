@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>本页是angularjs测试的导航页</title>
+	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<script src="angular-1.0.1.min.js"></script>
+</head>
+<body ng-app>
+	<div class="container">
+		<h1>Angularjs Test Code</h1>
+		<hr>
+			<div class="panel">
+			  <h3>1.hello world程序(双数据绑定)</h3>
+			  <div class="form-group">
+			  	<div class="input-group">
+			  	  <div class="input-group-addon">name:</div>
+			  		<input type="text" class="form-control" ng-model="name" id="name"/>
+			  	</div>
+			  </div>
+			  <p>hello:{{name || 'liteng'}}</p>
+	      <p>为了避免刷新出现{{}}代码的现象可以使用ng-bind来替代</p>
+	      <p>hello: <span ng-bind="name"></span>	</p>
+			  <p>url: <a href="http://2.liteng.sinaapp.com/angularjsTest/helloangularjs.html">http://2.liteng.sinaapp.com/angularjsTest/helloangularjs.html</a></p>
+			</div>
+
+			<div class="panel">
+				<h3>2.使用小案例</h3>
+				<div class="row">
+					<div class="col-md-3">
+					  单价：<input type="number" min=0 ng-model="price" ng-init="price=299">
+					</div>
+					<div class="col-md-3">
+						数量: <input type="number" min=0 ng-model="quantity" ng-init="quantity=1">
+					</div>
+					<div class="col-md-3">
+					  总价：{{(price) * (quantity)}}
+					</div>
+				</div>
+        <blockquote>
+          <ol>
+        		<li>涉及html5的input：<a href="http://www.w3school.com.cn/html5/att_input_type.asp">http://www.w3school.com.cn/html5/att_input_type.asp</a></li>
+        		<li>ng-init:设定初始值</li>
+        	</ol>
+        </blockquote>
+        <p>url:<a href="http://2.liteng.sinaapp.com/angularjsTest/event-bind.html">http://2.liteng.sinaapp.com/angularjsTest/event-bind.html</a></p>
+			</div>
+			<div class="panel">
+				<h3>3.ng-init:可默认指定属性值</h3>
+				<p ng-init="value='hello world'">{{value}}</p>
+				<blockquote>
+					<pre>
+						<p ng-init="value='hello world'">ng-init="value='hello world'"</p>
+					</pre>
+				</blockquote>
+				<p>url: <a href="http://2.liteng.sinaapp.com/angularjsTest/ng-init.html">http://2.liteng.sinaapp.com/angularjsTest/ng-init.html</a></p>
+			</div>
+			<div class="panel">
+				<h3>4.ng-repeat:用于迭代数据类似于js中的 i for info</h3>
+				<div ng-init="friends=[{name:'Jhon',age:25},{name:'Mary',age:28}]">
+				  <p>我有{{friends.length}} 朋友.他们是</p>
+				  <ul>
+				    <li ng-repeat="friend in friends">
+				    [{{$index+1}}]:{{friend.name}}年龄为：{{friend.age}}</li>
+				  </ul>
+				</div>
+				<p>url: <a href="http://2.liteng.sinaapp.com/angularjsTest/ng-repeat.html">http://2.liteng.sinaapp.com/angularjsTest/ng-repeat.html</a></p>
+			</div>
+			<div class="panel">
+				<h3>5.ng-click:dom的点击事件</h3>
+				<p>url: <a href="http://2.liteng.sinaapp.com/angularjsTest/ng-click.html">http://2.liteng.sinaapp.com/angularjsTest/ng-click.html</a></p>
+			</div>
+			<div class="panel">
+				<h3>6.ng-show:设置元素显示</h3>
+				<p>url: <a href="http://2.liteng.sinaapp.com/angularjsTest/ng-show.html">http://2.liteng.sinaapp.com/angularjsTest/ng-show.html</a></p>
+			</div>
+			<div class="panel">
+				<h3>7.ng-hide:设置元素隐藏</h3>
+				<p>url: <a href="http://2.liteng.sinaapp.com/angularjsTest/ng-hide.html">http://2.liteng.sinaapp.com/angularjsTest/ng-hide.html</a></p>
+			</div>
+			<div class="panel">
+				<h3>8.运用ng-show制作toggle效果</h3>
+				<a href ng-click="showLog=!showLog">显示logo</a>
+				<div ng-show="showLog">
+				  <img ng-src="http://liteng.org/sites/default/files/logo.png" alt="">
+				</div>
+				<p>url: <a href="http://2.liteng.sinaapp.com/angularjsTest/ng-toggle.html">http://2.liteng.sinaapp.com/angularjsTest/ng-toggle.html</a></p>
+			</div>
+			<div class="panel">
+				<h3>9.ng-style:和默认style类似</h3>
+				<p>url: <a href="http://2.liteng.sinaapp.com/angularjsTest/ng-style.html">http://2.liteng.sinaapp.com/angularjsTest/ng-style.html</a></p>
+			</div>
+			<div class="panel">
+				<h3>10.filter过滤</h3>
+				<div>{{9999|number}}</div> <!--9,999-->
+				<div>{{9999+1 |number:2}}</div><!--10,000.00-->
+				<div>{{9*9|currency}}</div><!--$81.00-->
+				<div>{{'hello world' | uppercase}}</div><!--HELLO WORLD-->
+				<p>url <a href="http://2.liteng.sinaapp.com/angularjsTest/filter.html">http://2.liteng.sinaapp.com/angularjsTest/filter.html</a></p>
+			</div>
+			<div class="panel">
+				<h3>11.ng-template:可以加载模板</h3>
+				<p>url: <a href="http://2.liteng.sinaapp.com/angularjsTest/show-tpl.html">http://2.liteng.sinaapp.com/angularjsTest/show-tpl.html</a></p>
+			</div>
+			<div class="panel">
+				<h3>12.$http:一个类似ajax的方法很管用</h3>
+				<p>url <a href="http://2.liteng.sinaapp.com/angularjsTest/ajax.html">http://2.liteng.sinaapp.com/angularjsTest/ajax.html</a></p>
+			</div>
+	</div>
+</body>
+</html>
